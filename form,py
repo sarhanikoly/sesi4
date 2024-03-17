@@ -1,0 +1,47 @@
+class Mahasiswa:
+    def __init__(self, nama, tempat_lahir, tanggal_lahir, tahun_lahir, nilai_english, nilai_mtk, nilai_indonesia, jenis_kelamin):
+        self.nama = nama
+        self.tempat_lahir = tempat_lahir
+        self.tanggal_lahir = tanggal_lahir
+        self.tahun_lahir = tahun_lahir
+        self.nilai_english = nilai_english
+        self.nilai_mtk = nilai_mtk
+        self.nilai_indonesia = nilai_indonesia
+        self.jenis_kelamin = jenis_kelamin
+
+    def hitung_rata_rata(self):
+        return (self.nilai_english + self.nilai_mtk + self.nilai_indonesia) / 3
+
+    def disarankan_jurusan(self):
+        rata_rata_nilai = self.hitung_rata_rata()
+        if rata_rata_nilai >= 80:
+            if self.jenis_kelamin.lower() == 'laki-laki':
+                return "Jurusan Teknik Informatika"
+            elif self.jenis_kelamin.lower() == 'perempuan':
+                return "Jurusan Sistem Informasi"
+        return "Jurusan DKV"
+
+
+def main():
+    nama = input("Nama: ")
+    tempat_lahir = input("Tempat Lahir: ")
+    tanggal_lahir = int(input("Tanggal Lahir: "))
+    bulan_lahir = input("Bulan Lahir: ")
+    tahun_lahir = int(input("Tahun Lahir: "))
+    nilai_english = float(input("Nilai Bahasa Inggris: "))
+    nilai_mtk = float(input("Nilai Matematika: "))
+    nilai_indonesia = float(input("Nilai Bahasa Indonesia: "))
+    jenis_kelamin = input("Jenis Kelamin (Laki-laki/Perempuan): ")
+
+    tahun_sekarang = 2024
+    umur = tahun_sekarang - tahun_lahir
+
+    if umur < 25:
+        mahasiswa = Mahasiswa(nama, tempat_lahir, tanggal_lahir, tahun_lahir, nilai_english, nilai_mtk, nilai_indonesia, jenis_kelamin)
+        jurusan_disarankan = mahasiswa.disarankan_jurusan()
+        print("\nSelamat! Anda direkomendasikan masuk ke jurusan", jurusan_disarankan)
+    else:
+        print("\nMaaf, Anda tidak memenuhi syarat umur untuk mendaftar.")
+
+if __name__ == "__main__":
+    main()
